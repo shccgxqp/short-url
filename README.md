@@ -1,26 +1,58 @@
-## **規格**
+# AC 學期 C3 M6 ｜ 短網址產生器
 
-- 程式邏輯需包括以下「例外處理」，請使用註解標註出相關段落：
-  - 輸入相同網址時，產生一樣的縮址。
-  - 若使用者沒有輸入內容，就按下了送出鈕，需要防止表單送出並提示使用者
-- 提交 GitHub 專案
-- 在 package.json 裡設定執行腳本，定義啟動專案的必要指令
+利用 Node.js 和 Express 打造一個簡單的短網址產生器。
 
-### **挑戰功能**
+## 基本功能
 
-- 使用者可以按  `Copy`  來複製縮短後的網址
+(1)首頁畫面上有一個表單，使用者可以在表單輸入原始網址，如 https://www.google.com
+(2)送出表單之後，畫面會回傳格式化後的短網址，如 https://your-project-name.herokuapp.com/6y7UP
+(3)在伺服器啟動期間，使用者可以在瀏覽器的網址列，輸入你提供的短網址，如 https://your-project-name.herokuapp.com/6y7UP，瀏覽器就會導向原本的網站，如 https://www.google.com
+(4)短網址輸出格式為 5 碼英數組合
+(5)使用 MongoDB & Mongoose 完成專案
+(6)程式邏輯需包括以下例外處理，請使用註解標註出相關段落：
 
-## **提醒**
+- 輸入相同網址時，產生一樣的縮址。
+- 輸入不同的網址時，防止有重覆的網址組合出現。
+- 若使用者沒有輸入內容，就按下了送出鈕，需要防止表單送出並提示使用者
 
-請務必使用 2 ～ 3 組以上的網址測試，並確認：
+## Getting Started
 
-1. 是否可以成功使用短網址連向原始網站
-2. 短網址格式是否為 5 組英數亂碼
+Clone respository to your local computer
 
-在你提交 GitHub 專案之後，助教會用  `git clone`  下載專案，並執行你定義在 package.json 裡的腳本，請務必測試你定義的腳本在全新的環境中是否能成功執行（若無法照腳本執行會直接 try harder，請務必測試 ）。
+```
+$ git clone https://github.com/shccgxqp/short-url.git
+```
 
-### **功能**
+Install by npm
 
-- 首頁畫面上有一個表單，使用者可以在表單輸入原始網址，如  `https://www.google.com`；送出表單之後，畫面會回傳格式化後的短網址，如  `https://your-project-name.herokuapp.com/6y7UP`
-- **在伺服器啟動期間**，使用者可以在瀏覽器的網址列，輸入你提供的短網址（如  `https://your-project-name.herokuapp.com/6y7UP`），瀏覽器就會導向原本的網站（如  `https://www.google.com`）
-- 短網址輸出格式為 5 碼英數組合，如下圖（這裡  `...`  代表你應用程式的網址）：
+```
+$ npm install
+```
+
+Execute
+
+```
+$ npm run dev
+```
+
+Terminal show the message
+
+```
+express server is running on http://localhost:3000
+```
+
+Now you can browse the website on
+
+```
+http://localhost:3000
+```
+
+## 安裝套件
+
+- Node.js: 18.15.0
+- Express: 4.18.2
+- Express-Handlebars: 7.1.2
+- body-parser: 1.19.0
+- mongoose: 7.4.4
+- dotenv: 16.3.1
+- Bootstrap: 5.1.3
