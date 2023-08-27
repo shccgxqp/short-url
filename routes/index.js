@@ -34,7 +34,7 @@ routes.post("/", (req, res) => {
       if (url !== null) {
         return res.render("result", { randomSring: url.randomURL });
       } else {
-        //判斷有無重複亂數，有重新判斷，沒有繼續創造新資料
+        //判斷有無重複亂數，有重新判斷已存在亂數，沒有生成新資料
         const insertRandom = () => {
           let random = randomjs.getRandomNumber(5);
           urlModel
