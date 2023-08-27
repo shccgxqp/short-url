@@ -5,10 +5,17 @@
 ## 基本功能
 
 (1)首頁畫面上有一個表單，使用者可以在表單輸入原始網址，如 https://www.google.com
-(2)送出表單之後，畫面會回傳格式化後的短網址，如 https://your-project-name.herokuapp.com/6y7UP
-(3)在伺服器啟動期間，使用者可以在瀏覽器的網址列，輸入你提供的短網址，如 https://your-project-name.herokuapp.com/6y7UP，瀏覽器就會導向原本的網站，如 https://www.google.com
-(4)短網址輸出格式為 5 碼英數組合
+
+(2)送出表單之後，畫面會回傳格式化後的短網址，如 https://localhost:3000/s7aq5
+
+(3)在伺服器啟動期間，使用者可以在瀏覽器的網址列，輸入你提供的短網址，
+
+- 如 https://localhost:3000/s7aq5，瀏覽器就會導向原本的網站，如 https://www.google.com
+
+(4)短網址輸出格式為 5 碼英數組合 
+
 (5)使用 MongoDB & Mongoose 完成專案
+
 (6)程式邏輯需包括以下例外處理，請使用註解標註出相關段落：
 
 - 輸入相同網址時，產生一樣的縮址。
