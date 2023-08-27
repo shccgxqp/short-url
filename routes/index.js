@@ -27,44 +27,39 @@ routes.post("/", (req, res) => {
   if (keyword === "") {
     return res.render("index");
   }
-  let randomSring = "";
-
   // 搜尋網頁有無紀錄，沒有就生成，有就返回亂數
   urlModel
     .findOne({ originalURL: keyword })
     .then((url) => {
       if (url !== null) {
-        randomSring += url.randomURL;
+        return res.render("result", { randomSring: url.randomURL });
       } else {
-        let random = randomjs.getRandomNumber(5);
-
         //判斷有無重複亂數，有重新判斷，沒有繼續創造新資料
-        function insertRandom() {
+        const insertRandom = () => {
+          let random = randomjs.getRandomNumber(5);
           urlModel
             .findOne({ randomURL: random })
             .then((ur2) => {
               if (ur2 !== null) {
-                insertRandom();
+                insertRandom(keyword);
               } else {
-                insertPostData(keyword, random);
-                randomSring += random;
+                insertPostData(keyword, random).then(() => {
+                  res.render("result", { randomSring: random });
+                });
               }
             })
             .catch((err) => console.error(err));
-        }
+        };
 
         insertRandom();
       }
-    })
-    .then(() => {
-      res.render("result", { randomSring: randomSring });
     })
     .catch((err) => console.error(err));
 });
 
 //monogoDB INSERT
-function insertPostData(url1, url2) {
-  urlModel.insertMany([
+async function insertPostData(url1, url2) {
+  await urlModel.insertMany([
     {
       originalURL: url1,
       randomURL: url2,
